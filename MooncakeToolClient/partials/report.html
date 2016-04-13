@@ -38,7 +38,7 @@
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <div id="columnchart_values"></div>                    <!-- /.row -->
+                    <div id="column_chart"></div>                    <!-- /.row -->
                 </div>
                 <!-- /.panel-body -->
             </div>
@@ -73,7 +73,8 @@
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <div id="columnchart_values" style="width: 900px; height: 300px;"></div>                    <!-- /.row -->
+                    <div id="pie_Chart"></div>                    
+                    <!-- /.row -->
                 </div>
                 <!-- /.panel-body -->
             </div>
@@ -86,8 +87,7 @@
                     <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
                 </div>
                 <div class="panel-body">
-                    <div id="morris-donut-chart"></div>
-                    <a href="#" class="btn btn-default btn-block">View Details</a>
+                    <div id="table_chart"></div>
                 </div>
                 <!-- /.panel-body -->
             </div>
@@ -97,7 +97,7 @@
                     <i class="fa fa-bar-chart-o fa-fw"></i> Time-Series Line
                 </div>
                 <div class="panel-body">
-                    <figure class="demo" id="example3" style="height: 300px"><svg height="300" width="391" class="xchart"><g transform="translate(60,0)"><g class="scale"><g class="axis axisX" transform="translate(0,280)"><g class="tick" transform="translate(20,0)" style="opacity: 1;"><line y2="-275" x2="0"></line><text y="3" x="0" dy=".71em" style="text-anchor: middle;">Monday</text></g><g class="tick" transform="translate(92.75,0)" style="opacity: 1;"><line y2="-275" x2="0"></line><text y="3" x="0" dy=".71em" style="text-anchor: middle;">Tuesday</text></g><g class="tick" transform="translate(165.5,0)" style="opacity: 1;"><line y2="-275" x2="0"></line><text y="3" x="0" dy=".71em" style="text-anchor: middle;">Thursday</text></g><g class="tick" transform="translate(238.25,0)" style="opacity: 1;"><line y2="-275" x2="0"></line><text y="3" x="0" dy=".71em" style="text-anchor: middle;">Friday</text></g><g class="tick" transform="translate(311,0)" style="opacity: 1;"><line y2="-275" x2="0"></line><text y="3" x="0" dy=".71em" style="text-anchor: middle;">Sunday</text></g><path class="domain" d="M20,-275V0H311V-275"></path></g><g class="axis axisY" transform="translate(0,0)"><g class="tick" transform="translate(0,275)" style="opacity: 1;"><line x2="331" y2="0"></line><text x="-3" dy=".32em" y="0" style="text-anchor: end;">-6</text></g><g class="tick" transform="translate(0,250)" style="opacity: 1;"><line x2="331" y2="0"></line><text x="-3" dy=".32em" y="0" style="text-anchor: end;">-4</text></g><g class="tick" transform="translate(0,225)" style="opacity: 1;"><line x2="331" y2="0"></line><text x="-3" dy=".32em" y="0" style="text-anchor: end;">-2</text></g><g class="tick" transform="translate(0,200)" style="opacity: 1;"><line x2="331" y2="0"></line><text x="-3" dy=".32em" y="0" style="text-anchor: end;">0</text></g><g class="tick" transform="translate(0,175)" style="opacity: 1;"><line x2="331" y2="0"></line><text x="-3" dy=".32em" y="0" style="text-anchor: end;">2</text></g><g class="tick" transform="translate(0,150)" style="opacity: 1;"><line x2="331" y2="0"></line><text x="-3" dy=".32em" y="0" style="text-anchor: end;">4</text></g><g class="tick" transform="translate(0,125)" style="opacity: 1;"><line x2="331" y2="0"></line><text x="-3" dy=".32em" y="0" style="text-anchor: end;">6</text></g><g class="tick" transform="translate(0,100)" style="opacity: 1;"><line x2="331" y2="0"></line><text x="-3" dy=".32em" y="0" style="text-anchor: end;">8</text></g><g class="tick" transform="translate(0,75)" style="opacity: 1;"><line x2="331" y2="0"></line><text x="-3" dy=".32em" y="0" style="text-anchor: end;">10</text></g><g class="tick" transform="translate(0,50)" style="opacity: 1;"><line x2="331" y2="0"></line><text x="-3" dy=".32em" y="0" style="text-anchor: end;">12</text></g><g class="tick" transform="translate(0,25)" style="opacity: 1;"><line x2="331" y2="0"></line><text x="-3" dy=".32em" y="0" style="text-anchor: end;">14</text></g><g class="tick" transform="translate(0,0)" style="opacity: 1;"><line x2="331" y2="0"></line><text x="-3" dy=".32em" y="0" style="text-anchor: end;">16</text></g><path class="domain" d="M331,0H0V275H331"></path></g><g class="axisZero"><line x1="0" x2="331" y1="200" y2="200"></line></g></g><g data-index="3" class=" main pizza line color0"><path class="fill" d="M20,200C28.083333333333336,200,52.33333333333333,200,68.5,200S100.83333333333334,200,117.00000000000001,200S149.33333333333334,200,165.5,200S197.83333333333337,200,214.00000000000003,200S246.33333333333334,200,262.5,200S302.9166666666667,200,311,200L311,125C305.99136757765336,121.07571067939853,268.57622300338204,79.16981571729116,262.5,87S227.63771866957873,244.12725947156864,214.00000000000003,250S177.33916625114335,245.1577927373788,165.5,238S123.85869630564825,45.990027655033515,117.00000000000001,38S73.26706153958654,117.62825535115485,68.5,125S23.0079526728627,184.09276250741547,20,188Z" style="opacity: 1;"></path><path class="line" d="M20,188C23.0079526728627,184.09276250741547,63.732938460413465,132.37174464884515,68.5,125S110.14130369435178,30.009972344966485,117.00000000000001,38S153.66083374885665,230.8422072626212,165.5,238S200.36228133042133,255.87274052843136,214.00000000000003,250S256.42377699661796,94.83018428270884,262.5,87S305.99136757765336,121.07571067939853,311,125" style="opacity: 1;"></path></g></g></svg></figure>
+                    <div id="line_Chart"></div>
                 </div>
                 <!-- /.panel-body -->
             </div>
