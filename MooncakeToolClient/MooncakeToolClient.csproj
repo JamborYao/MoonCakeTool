@@ -216,6 +216,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="index.html" />
+    <Content Include="partials\github.html" />
     <Content Include="partials\report.html" />
     <Content Include="partials\test.html" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
@@ -990,6 +991,8 @@
     <Content Include="Scripts\bootStrapUI\dist\js\sb-admin-2.js" />
     <Content Include="Scripts\bootStrapUI\js\flot-data.js" />
     <Content Include="Scripts\bootStrapUI\js\morris-data.js" />
+    <Content Include="Scripts\controller\githubController.js" />
+    <Content Include="Scripts\controller\navController.js" />
     <Content Include="Scripts\controller\reportController.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

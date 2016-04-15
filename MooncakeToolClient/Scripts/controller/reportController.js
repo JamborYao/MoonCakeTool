@@ -2,7 +2,14 @@
     //load chart
     google.charts.load("current", { packages: ['corechart', 'table', 'line', 'corechart'] });
     //column chart    
-    google.charts.setOnLoadCallback(drawColumnChart);
+    //google.charts.setOnLoadCallback(drawColumnChart);
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        drawColumnChart();
+        drawTableChart();
+        drawLineChart();
+        drawPieChart();
+    }
     function drawColumnChart() {
         var data = google.visualization.arrayToDataTable(columnChart.list);
 
@@ -28,7 +35,7 @@
     }
 
     //table chart   
-    google.charts.setOnLoadCallback(drawTableChart);
+    //google.charts.setOnLoadCallback(drawTableChart);
 
     function drawTableChart() {
         var data = new google.visualization.DataTable();
@@ -49,7 +56,7 @@
     }
 
     //line chart
-    google.charts.setOnLoadCallback(drawLineChart);
+    //google.charts.setOnLoadCallback(drawLineChart);
     function drawLineChart() {
         var data = google.visualization.arrayToDataTable(lineChart.data);
         var options = {
@@ -67,7 +74,7 @@
     }
 
     //pie chart
-    google.charts.setOnLoadCallback(drawPieChart);
+    //google.charts.setOnLoadCallback(drawPieChart);
     function drawPieChart() {
         var data = google.visualization.arrayToDataTable(pieChart.data);
 

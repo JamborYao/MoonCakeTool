@@ -27,7 +27,7 @@
     <![endif]-->
 </head>
 <body>
-    <div id="wrapper">
+    <div id="wrapper" ng-controller="navController">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -256,7 +256,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                            <a href="javascript:void(0)" ng-click="navigateTo('report')"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="flot.html">Flot Charts</a>
@@ -267,6 +267,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li><a href="javascript:void(0)" ng-click="navigateTo('github')"><i class="fa fa-bar-chart-o fa-fw"></i> GitHub<span class="fa arrow"></span></a></li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -296,8 +297,10 @@
     <!--google chart-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="Scripts/app.js"></script>
+    <script src="Scripts/controller/navController.js"></script>
     <!--service-->
     <script src="Scripts/services/reportService.js"></script>
     <script src="Scripts/controller/reportController.js"></script>
+    <script src="Scripts/controller/githubController.js"></script>
 </body>
 </html>
