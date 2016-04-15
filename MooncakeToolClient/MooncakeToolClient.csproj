@@ -218,6 +218,7 @@
     <Content Include="index.html" />
     <Content Include="partials\github.html" />
     <Content Include="partials\report.html" />
+    <Content Include="partials\reportGoogle.html" />
     <Content Include="partials\test.html" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -538,6 +539,8 @@
     <Content Include="Scripts\bootStrapUI\bower_components\raphael\.bower.json" />
     <Content Include="Scripts\bootStrapUI\bower_components\raphael\bower.json" />
     <Content Include="Scripts\bootStrapUI\chart\charts-xcharts.js" />
+    <Content Include="Scripts\bootStrapUI\FusionCharts\._angular-fusioncharts.min.js" />
+    <Content Include="Scripts\bootStrapUI\FusionCharts\angular-fusioncharts.min.js" />
     <Content Include="Scripts\bootStrapUI\less\mixins.less" />
     <Content Include="Scripts\bootStrapUI\less\sb-admin-2.less" />
     <Content Include="Scripts\bootStrapUI\less\variables.less" />
@@ -994,6 +997,7 @@
     <Content Include="Scripts\controller\githubController.js" />
     <Content Include="Scripts\controller\navController.js" />
     <Content Include="Scripts\controller\reportController.js" />
+    <Content Include="Scripts\controller\reportGoogleController.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

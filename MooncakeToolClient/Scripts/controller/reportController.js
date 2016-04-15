@@ -1,6 +1,6 @@
 ﻿controllers.controller('reportController', ['$scope', '$routeParams', 'columnChart', 'tableChart', 'lineChart', 'pieChart', function ($scope, $routeParams, columnChart, tableChart, lineChart, pieChart) {
     //load chart
-    google.charts.load("current", { packages: ['corechart', 'table', 'line', 'corechart'] });
+    //google.charts.load("current", { packages: ['corechart', 'table', 'line', 'corechart'] });
     //column chart    
     //google.charts.setOnLoadCallback(drawColumnChart);
     google.charts.setOnLoadCallback(drawChart);
@@ -39,7 +39,7 @@
 
     function drawTableChart() {
         var data = new google.visualization.DataTable();
-        var data =google.visualization.arrayToDataTable(tableChart.data);
+        var data = google.visualization.arrayToDataTable(tableChart.data);
         //var data = new google.visualization.DataTable();
         //data.addColumn('string', 'Name');
         //data.addColumn('number', 'Salary');
@@ -81,7 +81,7 @@
         var options = {
             title: 'My Daily Activities',
             width: '100%',
-            height:'100%',
+            height: '100%',
             is3D: true,
         };
         var chart = new google.visualization.PieChart(document.getElementById('pie_Chart'));
