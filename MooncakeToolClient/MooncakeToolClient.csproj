@@ -222,6 +222,10 @@
     <Content Include="partials\test.html" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <None Include="Scripts\angular.intellisense.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -544,6 +548,7 @@
     <Content Include="Scripts\bootStrapUI\less\mixins.less" />
     <Content Include="Scripts\bootStrapUI\less\sb-admin-2.less" />
     <Content Include="Scripts\bootStrapUI\less\variables.less" />
+    <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootStrapUI\bower_components\bootstrap-social\.gitignore" />
     <Content Include="Scripts\bootStrapUI\bower_components\bootstrap-social\bootstrap-social.css" />
