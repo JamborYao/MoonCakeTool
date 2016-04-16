@@ -1,0 +1,13 @@
+﻿<div class="col-md-4 col-sm-6" ng-model="cardData">
+    <div class="panel panel-default">
+        <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>More Templates</h4></div>
+        <div class="panel-body">
+            <a href="#">{{cardData.author}}</a>
+            <div class="clearfix"></div>
+            {{cardData.body}}
+             <hr>
+            <ul class="list-unstyled"><li><a href="http://www.bootply.com/templates">{{cardData.tag}}</a></li><li><a href="http://www.bootply.com/templates">Darkside</a></li><li><a href="http://www.bootply.com/templates">Greenfield</a></li></ul>
+        </div>
+    </div>
+    <span ng-click="saybye()">click</span>
+</div>

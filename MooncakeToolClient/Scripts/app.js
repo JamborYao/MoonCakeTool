@@ -1,6 +1,7 @@
 ﻿var controllers = angular.module('controllers', []);
 
-var app = angular.module('_app_', ['ngRoute', 'controllers']);
+
+var app = angular.module('_app_', ['ngRoute', 'controllers','git']);
 
 app.config(['$routeProvider',
   function ($routeProvider) {
@@ -17,8 +18,6 @@ app.config(['$routeProvider',
         otherwise({
             redirectTo:'/github/'
         })
-      
-     
 
   }]);
 

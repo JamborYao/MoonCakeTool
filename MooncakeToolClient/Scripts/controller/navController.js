@@ -11,5 +11,7 @@
                 $location.url(urllocation);
             }
         }
-
+        $scope.SayHello = function () {
+            alert('111222');
+        }
     }]);
