@@ -5,7 +5,7 @@ var app = angular.module('_app_', ['ngRoute', 'controllers','git']);
 
 app.config(['$routeProvider',
   function ($routeProvider) {
-      //google.charts.load("current", { packages: ['corechart', 'table', 'line', 'corechart'] });
+      
       $routeProvider.
         when('/report/', {
             templateUrl: 'partials/report.html',
@@ -19,6 +19,8 @@ app.config(['$routeProvider',
             redirectTo:'/github/'
         })
 
-  }]);
+  }]).run(function () {
+      google.charts.load("current", { packages: ['corechart', 'table', 'line', 'corechart'] });
+  });
 
 
