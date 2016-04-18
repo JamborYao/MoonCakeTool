@@ -4,7 +4,7 @@ gitModule.directive('card', function () {
     return {
         scope: {
             cardData: '='
-           
+
         },
         restrict: 'AEMC',
         templateUrl: '/partials/card.html',
@@ -17,9 +17,15 @@ gitModule.directive('card', function () {
         replace: true
         ,
         link: function (scope, element, attrs) {
-            scope.saybye= function () {
-                alert('say bye');
+            scope.saybye = function () {
+                alert('say bye11');
             }
+            //element.find('input#test').bind('onmouseover', function () {
+            //    console.log('test click');
+            //})
+            element.find('div.test11').on('mouseover', function () {
+                console.log(scope.cardData.author+"11");
+            })
         }
     }
 }).directive("subcard", function () {
