@@ -1,14 +1,35 @@
-﻿<div class="col-md-4 col-sm-6" ng-model="cardData" >
+﻿<div class="col-md-4 col-sm-6" ng-model="cardData">
     <div class="panel panel-default">
-        <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>More Templates</h4></div>
+        <div class="notification-item">
+            <ul class="nav nav-pills" role="tablist">
+
+                <li><span class="badge badge-red" data-toggle="tooltip" title="pull request">3</span></li>
+                <li><span class="badge badge-red" data-toggle="tooltip" title="issues">3</span></li>
+            </ul>
+        </div>
+        <div class="panel-heading">
+
+
+            <h5>More Templates1I'm confused as to how to g </h5>
+            
+        </div>
         <div class="panel-body">
-            <a href="#">{{cardData.author}}</a>
+
             <div class="clearfix"></div>
             {{cardData.body}}
-             <hr>
-            <ul class="list-unstyled"><li><a href="http://www.bootply.com/templates">{{cardData.tag}}</a></li><li><a href="http://www.bootply.com/templates">Darkside</a></li><li><a href="http://www.bootply.com/templates">Greenfield</a></li></ul>
+
+            <hr>
+            <div>
+                <a href="#">{{cardData.author}}</a>
+            </div>
         </div>
-        <div class="test11"><span class="badge">4</span></div>
+        <div class="panel-footer">
+
+            <span class="label label-primary">Storage</span>
+            <span class="label label-primary">Virtual machine</span>
+            <span class="label label-primary">Website</span>
+            <span class="label label-success">c#</span>
+            <span class="label label-success">andrio</span>
+        </div>
     </div>
-    <span ng-click="saybye()">click</span>
 </div>

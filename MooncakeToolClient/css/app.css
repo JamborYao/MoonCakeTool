@@ -1,0 +1,14 @@
+﻿.notification-item {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 999;
+}
+
+.badge-red {
+    background: red;
+}
+
+.badge-blue {
+    background: blue;
+}

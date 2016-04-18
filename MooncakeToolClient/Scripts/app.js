@@ -21,4 +21,6 @@ app.config(['$routeProvider',
 
   }]);
 
-
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+})
