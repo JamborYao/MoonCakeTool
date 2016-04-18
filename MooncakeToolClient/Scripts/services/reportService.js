@@ -58,3 +58,24 @@ app.factory('pieChart', function () {
     pieChart.data = data;
     return pieChart;
 });
+
+app.factory('CardView', function () {
+    var CardView = {};
+    var data = [{
+        author: 'Free @Bootply',
+        tag: 'dashboard1',
+        body: "There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline."
+    },
+    {
+        author: 'Free @jambor',
+        tag: 'dashboard1',
+        body: "There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline."
+    },
+    {
+        author: 'Free @karen',
+        tag: 'dashboard1',
+        body: "There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline."
+    }];
+    CardView.data = data;
+    return CardView;
+});

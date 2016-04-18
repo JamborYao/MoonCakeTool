@@ -60,6 +60,21 @@ gitModule.controller('gitController', ['$scope', function ($scope) {
 
 controllers.controller('githubController', ['$scope',
     function ($scope) {
+        $scope.samples = [{
+            author: 'Free @Bootply',
+            tag: 'dashboard1',
+            body: "There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline."
+        },
+       {
+           author: 'Free @jambor',
+           tag: 'dashboard1',
+           body: "There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline."
+       },
+       {
+           author: 'Free @karen',
+           tag: 'dashboard1',
+           body: "There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline."
+       }]
         $scope.SayHello = function () {
             alert('111222');
         }

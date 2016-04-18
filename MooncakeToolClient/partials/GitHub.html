@@ -14,7 +14,7 @@
             <input type="button" value="click test" ng-click="alertME()" />
         </div>
     </div>-->
-    <div class="row" ng-controller="gitController">
+    <div class="row">
         <!--search bar-->
         <div class="col-lg-12 panel">
             <div class="col-lg-6 form-inline">
@@ -43,7 +43,8 @@
             </div>
         </div>
         <!--cards list-->
-        <card  ng-repeat="sample in samples" card-data="sample" ></card>
+        <!--<card  ng-repeat="sample in samples" card-data="sample" ></card>-->
+        <cardview ng-repeat="sample in samples"></cardview>
     
        
 

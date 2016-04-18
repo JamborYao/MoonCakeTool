@@ -217,6 +217,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="index.html" />
     <Content Include="partials\card.html" />
+    <Content Include="partials\cardview.html" />
     <Content Include="partials\github.html" />
     <Content Include="partials\report.html" />
     <Content Include="partials\reportGoogle.html" />
@@ -1003,6 +1004,7 @@
     <Content Include="Scripts\controller\navController.js" />
     <Content Include="Scripts\controller\reportController.js" />
     <Content Include="Scripts\controller\reportGoogleController.js" />
+    <Content Include="Scripts\directives\directive.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
