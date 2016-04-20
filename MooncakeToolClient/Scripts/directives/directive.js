@@ -1,4 +1,4 @@
-﻿app.directive('cardview', function () {
+﻿app.directive('cardView', function () {
     return {
         //scope: { cardData: '=' },
         restrict:'E',
