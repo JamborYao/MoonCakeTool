@@ -52,19 +52,18 @@
             <nav>
                 <ul class="pagination">
                     <li>
-                        <a href="#" aria-label="Previous">
+                        <!--<a href="#" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
-                        </a>
+                        </a>-->
+                        <span style="cursor:pointer;" ng-click="getNextPage(1,$event)">&laquo;</span>
                     </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
+                    <li ng-repeat="number in pageNumbers"><span style="cursor:pointer;"  ng-click="getNextPage(number+1,$event)">{{number+1}}</span></li>
+                    
                     <li>
-                        <a href="#" aria-label="Next">
+                        <!--<a href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
-                        </a>
+                        </a>-->
+                        <span style="cursor:pointer;" ng-click="getNextPage(totalPage,$event)">&raquo;</span>
                     </li>
                 </ul>
             </nav>

@@ -12,3 +12,13 @@
 .badge-blue {
     background: blue;
 }
+
+.page-high {
+    color: indianred;
+    cursor: pointer;
+}
+
+.page-low {
+    color: blue;
+    cursor: pointer;
+}

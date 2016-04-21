@@ -18,33 +18,24 @@ gitModule.directive('card', function () {
     }
 })
 
-function getCardInfo($scope,$http)
-{
-    $http.get(baseUrl + "api/getcodeinfo").
-    success(function (data) {
-        $scope.samples = data;
-        console.log(data);
-    })
 
-}
 
 gitModule.controller('gitController', ['$scope','$http', function ($scope,$http) {
     $scope.SayHello = function () {
         alert('000');
     }
-    getCardInfo($scope, $http);
+    getCardInfo($scope, $http,1);
+    getPageNumber($scope, $http);
+    
+    $scope.getNextPage = function (page, obj)
+    {
+        getCardInfo($scope, $http, page);
+        $(obj.target).parent().parent().find('li span').attr('style', 'cursor:pointer;color:#337ab7');
+        $(obj.target).attr('style', 'cursor:pointer;color:indianred');
+      
+    }
     //$scope.samples = [{
     //    author: 'Free @Bootply',
-    //    tag: 'dashboard1',
-    //    body: "There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline."
-    //},
-    //{
-    //    author: 'Free @jambor',
-    //    tag: 'dashboard1',
-    //    body: "There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline."
-    //},
-    //{
-    //    author: 'Free @karen',
     //    tag: 'dashboard1',
     //    body: "There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline."
     //}]
