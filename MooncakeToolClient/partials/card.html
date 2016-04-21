@@ -1,4 +1,4 @@
-﻿<div class="col-md-4 col-sm-6" ng-model="cardData">
+﻿<div class="col-md-4 col-sm-6" ng-model="cardData" style="height:350px;overflow:auto">
     <div class="panel panel-default">
         <div class="notification-item">
             <ul class="nav nav-pills" role="tablist">
@@ -10,26 +10,25 @@
         <div class="panel-heading">
 
 
-            <h5>More Templates1I'm confused as to how to g </h5>
-            
+            <h5><a href="{{cardData.Link}}">  {{cardData.Title}}</a></h5>
+
         </div>
         <div class="panel-body">
 
             <div class="clearfix"></div>
-            {{cardData.body}}
+            <div style="height:100px;overflow:auto">{{cardData.Description | limitTo: 250}}{{cardData.Description.length>250?'...':''}}</div>
 
             <hr>
             <div>
-                <a href="#">{{cardData.author}}</a>
+                <a href="#">{{cardData.Author}}</a>
             </div>
         </div>
         <div class="panel-footer">
 
-            <span class="label label-primary">Storage</span>
-            <span class="label label-primary">Virtual machine</span>
-            <span class="label label-primary">Website</span>
-            <span class="label label-success">c#</span>
-            <span class="label label-success">andrio</span>
+            <span ng-repeat="product in cardData.Products" class="label label-primary">{{product}}</span>
+
+            <span ng-repeat="platform in cardData.Platforms" class="label label-success">{{platform}}</span>
+
         </div>
     </div>
 </div>

@@ -1,4 +1,6 @@
-﻿var controllers = angular.module('controllers', []);
+﻿var baseUrl = "http://localhost:8929/";
+
+var controllers = angular.module('controllers', []);
 
 
 var app = angular.module('_app_', ['ngRoute', 'controllers','git']);
