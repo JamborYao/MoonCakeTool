@@ -36,19 +36,8 @@
     <script src="Scripts/services/callRestAPI.js"></script>
   
 </head>
-<body>
-    <div id="wrapper">
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div ui-view="navtop"></div>
-            <!-- /.navbar-top-links -->
-            <div ui-view="navleft"></div>
-            <!-- /.navbar-static-side -->
-        </nav>
-        <div ui-view="navcenter"></div>
-        <!-- /#page-wrapper -->
-
-    </div>
+<body ng-controller="MainCtrl">
+    <div ui-view></div>
     <!-- /#wrapper -->
     <!-- jQuery -->
     <script src="Scripts/bootStrapUI/bower_components/jquery/dist/jquery.min.js"></script>
@@ -66,12 +55,15 @@
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-route.min.js"></script>
-    <script src="Scripts/angular-ui-router.js"></script>
+    <!--<script src="Scripts/angular-ui-router.js"></script>-->
+    <script src="//angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
 
     <!--google chart-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
     <script src="Scripts/app.js"></script>
     <script src="Scripts/controller/navController.js"></script>
+    <script src="Scripts/controller/navleftController.js"></script>
     <!--service-->
     <script src="Scripts/services/reportService.js"></script>
     <script src="Scripts/controller/reportController.js"></script>
