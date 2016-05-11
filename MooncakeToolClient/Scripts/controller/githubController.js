@@ -1,4 +1,4 @@
-﻿var gitModule = angular.module("git", []);
+﻿var gitModule = angular.module("git", ['ngAnimate', 'ui.bootstrap']);
 
 gitModule.directive('card', function () {
     return {
@@ -20,20 +20,23 @@ gitModule.directive('card', function () {
 
 
 
-gitModule.controller('gitController', ['$scope','$http', function ($scope,$http) {
+gitModule.controller('gitController', ['$scope','$http', function ($scope,$http,$uibModal, $log) {
     $scope.SayHello = function () {
         alert('000');
     }
     getCardInfo($scope, $http,1);
     getPageNumber($scope, $http);
     
-    $scope.getNextPage = function (page, obj)
-    {
+    $scope.getNextPage = function (page, obj) {
         getCardInfo($scope, $http, page);
         $(obj.target).parent().parent().find('li span').attr('style', 'cursor:pointer;color:#337ab7');
         $(obj.target).attr('style', 'cursor:pointer;color:indianred');
-      
-    }
+
+    };
+
+
+
+   
     //$scope.samples = [{
     //    author: 'Free @Bootply',
     //    tag: 'dashboard1',
@@ -52,3 +55,48 @@ controllers.controller('githubController', ['$scope',
 //   
 
 // 
+gitModule.controller('ModalDemoCtrl', function ($scope,$http, $uibModal, $log) {
+
+    $scope.items = ['item1', 'item2', 'item3'];
+    $scope.animationsEnabled = true;
+    $scope.open = function (size, id) {       
+         getNewCommit($scope, $http, id);
+         var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: '/partials/newCommit.html',
+            controller: 'ModalInstanceCtrl',
+            size: size,
+            resolve: {
+                commits: function () {
+                    return $scope.newCommits;
+                }
+            }
+        });
+
+         modalInstance.result.then(function (name) {
+             console.log(name);          
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+
+    $scope.toggleAnimation = function () {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+
+});
+
+// Please note that $uibModalInstance represents a modal window (instance) dependency.
+// It is not the same as the $uibModal service used above.
+
+gitModule.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, commits) {
+
+    $scope.items = commits;  
+    $scope.ok = function () {
+        $uibModalInstance.close('jambor');
+    };
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+});
+

@@ -15,3 +15,11 @@ function getPageNumber($scope, $http) {
        console.log(data.length);
    })
 }
+
+function getNewCommit($scope, $http, id) {
+    $http.get(baseUrl + "api/getNewCommit/" + id).
+    success(function (data) {
+        $scope.newCommits = data;
+        console.log(data);
+    })
+}

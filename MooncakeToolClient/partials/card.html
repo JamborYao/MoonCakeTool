@@ -1,11 +1,13 @@
-﻿<div class="col-md-4 col-sm-6" ng-model="cardData" style="height:350px;overflow:auto">
+﻿<div class="col-md-4 col-sm-6" ng-model="cardData" style="height:350px;overflow:auto" >
     <div class="panel panel-default">
-        <div class="notification-item">
+        <div class="notification-item" ng-controller="ModalDemoCtrl">
             <ul class="nav nav-pills" role="tablist">
 
                 <!--<li><span class="badge badge-red" data-toggle="tooltip" title="pull request">3</span></li>-->
-                <li><span class="badge badge-red" data-toggle="tooltip" title="commit" ng-show="{{cardData.NewCommitsHistory}}>0" >{{cardData.NewCommitsHistory}}</span></li>
+                <li><span class="badge badge-red" data-toggle="tooltip" title="commit" ng-show="{{cardData.NewCommitsHistory}}>0" ng-click="open('lg',cardData.Id)" 
+                          style="cursor:pointer;">{{cardData.NewCommitsHistory}}</span></li>
             </ul>
+          
         </div>
         <div class="panel-heading">
 
