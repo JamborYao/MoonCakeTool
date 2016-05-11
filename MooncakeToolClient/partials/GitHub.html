@@ -1,52 +1,48 @@
 ﻿
 
-<div id="page-wrapper">
+<div id="page-wrapper" ng-controller="gitController">
     <!--<div class="row">
         <div class="col-lg-12">
 
             <h1 class="page-header">GitHub</h1>
         </div>
     </div>-->
-
     <!--<div class="row">
         <div class="col-md-12" ng-controller="gitController">
-          
+
             <input type="button" value="click test" ng-click="alertME()" />
         </div>
     </div>-->
-    <div class="row" ng-controller="gitController">
+    <div class="row">
         <!--search bar-->
         <div class="col-lg-12 panel">
             <div class="col-lg-6 form-inline">
-                <label>PlatForm</label>
-                <select class="input-large form-control">
-                    <option value="">Select a State</option>
-                    <option value="AL" selected="selected">Alabama</option>
-                    <option value="AK">Alaska</option>
-                    <option value="AZ">Arizona</option>
+                <label>Product</label>
+                <select class="input-large form-control" >
+                    <option value="">All</option>
+                    <option ng-repeat="option in allProduct" value="{{option.Value}}">{{option.Name}}</option>
                 </select>
+
                 <label>PlatForm</label>
-                <select class="input-large form-control">
-                    <option value="">Select a State</option>
-                    <option value="AL" selected="selected">Alabama</option>
-                    <option value="AK">Alaska</option>
-                    <option value="AZ">Arizona</option>
+                <select class="input-large form-control" >
+                    <option value="">All</option>
+                    <option ng-repeat="option in allPlatform" value="{{option.Value}}">{{option.Name}}</option>
                 </select>
             </div>
             <div class="col-lg-6">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for..." />
+                    <input type="text" class="form-control" placeholder="Search for..." ng-model="searchKey" />
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
+                        <button class="btn btn-default" type="button" ng-click="search()">Go!</button>
                     </span>
                 </div>
             </div>
         </div>
         <!--cards list-->
-        <card  ng-repeat="sample in samples" card-data="sample" ></card>
-    
-       
+        <card ng-repeat="sample in samples" card-data="sample"></card>
+    </div>
 
+    <div class="row">
         <!--pagination-->
         <div class="col-lg-12 text-center">
             <nav>
@@ -57,8 +53,8 @@
                         </a>-->
                         <span style="cursor:pointer;" ng-click="getNextPage(1,$event)">&laquo;</span>
                     </li>
-                    <li ng-repeat="number in pageNumbers"><span style="cursor:pointer;"  ng-click="getNextPage(number+1,$event)">{{number+1}}</span></li>
-                    
+                    <li ng-repeat="number in pageNumbers"><span style="cursor:pointer;" ng-click="getNextPage(number+1,$event)">{{number+1}}</span></li>
+
                     <li>
                         <!--<a href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>

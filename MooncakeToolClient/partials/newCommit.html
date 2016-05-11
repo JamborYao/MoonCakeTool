@@ -1,13 +1,32 @@
 ﻿<div class="modal-header">
-    <h3 class="modal-title">I'm a modal!</h3>
+    <h3 class="modal-title">{{items[0].Title}}</h3>
 </div>
 <div class="modal-body">
-    <ul>
-        <li ng-repeat="commit in commits">
-            <a href="#" >{{ commit.Title }}</a>
-        </li>
-    </ul>
- 
+
+
+
+    <table class="table table-reflow">
+        <thead>
+            <tr>
+             
+                <th>New Commit Message</th>
+                <th>New Commit Url</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="commit in items">
+                
+                <td>{{ commit.Message }}</td>
+                <td><a href="{{commit.Html_Url}}">{{ commit.Html_Url }}</a></td>
+
+            </tr>
+            <tr><th>Azure CN:</th>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
