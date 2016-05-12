@@ -3,7 +3,7 @@
         $scope.searchKey = "all";
     }
     console.log($scope.searchKey);
-    $http.get(baseUrl + "api/getCodeInfobyPage/"+page+"/"+$scope.searchKey).
+    $http.get(baseUrl + "api/getCodeInfobyPage/" + page + "/" + $scope.searchKey).
     success(function (data) {
         $scope.samples = data;
         console.log(data);
@@ -14,10 +14,10 @@ function getPageNumber($scope, $http) {
     if ($scope.searchKey == null || $scope.searchKey == '') {
         $scope.searchKey = "all";
     }
-    $http.get(baseUrl + "api/getPageNumber/"+$scope.searchKey).
+    $http.get(baseUrl + "api/getPageNumber/" + $scope.searchKey).
    success(function (data) {
        $scope.pageNumbers = data;
-    
+
        $scope.totalPage = data.length;
        console.log(data);
    })
@@ -34,7 +34,7 @@ function getNewCommit($scope, $http, id) {
 function getAllProduct($scope, $http) {
     $http.get(baseUrl + "api/getAllProduct").
    success(function (data) {
-       $scope.allProduct = data;      
+       $scope.allProduct = data;
    })
 }
 
@@ -46,8 +46,8 @@ function getAllPlatform($scope, $http) {
    })
 }
 
-function searchByTitle($scope, $http,title) {
-    $http.get(baseUrl + "api/searchByTitle/"+title).
+function searchByTitle($scope, $http, title) {
+    $http.get(baseUrl + "api/searchByTitle/" + title).
    success(function (data) {
        $scope.samples = data;
        $scope.pageShow = false;
@@ -60,4 +60,13 @@ function getAllState($scope, $http) {
         $scope.allState = data;
 
     })
+}
+
+
+function postCodeOperateion($scope, $http,data)
+{
+    console.log(data);
+    $http.post(baseUrl + "api/updateCodeState", data).success(function (status) {
+        console.log(status)
+    });
 }

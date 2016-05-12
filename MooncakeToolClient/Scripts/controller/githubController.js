@@ -18,34 +18,34 @@ gitModule.directive('card', function () {
 })
 
 
-
-gitModule.controller('gitController', ['$scope', '$http', function ($scope, $http, $uibModal, $log) {
+gitModule.controller('gitController', ['$scope', '$http', 'columnChart', function ($scope, $http, $uibModal, $log, columnChart) {
     $scope.SayHello = function () {
         alert('000');
     }
-
-   
+    console.log(11);
+    $scope.test = 'hello world!';
     getCodeInfobyPage($scope, $http, 1);
     getPageNumber($scope, $http);
-    getAllProduct($scope, $http);   
+    getAllProduct($scope, $http);
     getAllPlatform($scope, $http);
+
     $scope.getNextPage = function (page, obj) {
         getCodeInfobyPage($scope, $http, page);
         $(obj.target).parent().parent().find('li span').attr('style', 'cursor:pointer;color:#337ab7');
         $(obj.target).attr('style', 'cursor:pointer;color:indianred');
 
     };
-
+    console.log(columnChart.list);
     $scope.search = function () {
         console.log($scope.searchKey == null);
         console.log($scope.searchKey);
-        if ($scope.searchKey == null || $scope.searchKey=='') {
+        if ($scope.searchKey == null || $scope.searchKey == '') {
             $scope.searchKey = "all";
         }
         getCodeInfobyPage($scope, $http, 1);
         getPageNumber($scope, $http);
-       // searchByTitle($scope, $http, $scope.searchKey);
-       // console.log($scope.searchKey == null);
+        // searchByTitle($scope, $http, $scope.searchKey);
+        // console.log($scope.searchKey == null);
     };
 
     $scope.selectChange = function () {
@@ -60,7 +60,19 @@ gitModule.controller('gitController', ['$scope', '$http', function ($scope, $htt
     //    tag: 'dashboard1',
     //    body: "There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline."
     //}]
-}])
+}]).factory('columnChart', function () {
+    var columnChart = {};
+    columnChart.list = [];
+    var data = [
+          ["Element", "Density", { role: "style" }],
+          ["Copper", 8.94, "#b87333"],
+          ["Silver", 10.49, "silver"],
+          ["Gold", 19.30, "gold"],
+          ["Platinum", 21.45, "color: #e5e4e2"]
+    ];
+    columnChart.list = data;
+    return columnChart;
+});
 
 controllers.controller('githubController', ['$scope',
     function ($scope) {
@@ -130,3 +142,18 @@ gitModule.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, c
     };
 });
 
+gitModule.controller('ModalStateCtrl', function ($scope, $http, $uibModalInstance, cardState) {
+
+    $scope.cardOperation = cardState.operation;
+    console.log($scope.cardOperation);
+    $scope.allState = cardState.allState;
+    $scope.ok = function () {
+        console.log($scope.cardOperation);
+        postCodeOperateion($scope, $http, $scope.cardOperation);
+        getCodeInfobyPage($scope, $http, 1);
+        $uibModalInstance.close('jambor');
+    };
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+});

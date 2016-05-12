@@ -1,17 +1,12 @@
 ﻿var cardModule = angular.module("card", []);
 cardModule.controller('cardController', function ($scope, $http, $uibModal, $log) {
 
-    getAllState($scope, $http);
-    $scope.stateChange = function () {
-        console.log('called');
-    }
+    getAllState($scope, $http);   
 
-
-    $scope.items = ['item1', 'item2', 'item3'];
-    $scope.test = "jambor11";
+ 
     $scope.animationsEnabled = true;
     $scope.open = function (size, id) {
-
+       
         $http.get(baseUrl + "api/getSampleCodeOperation/" + id).
   success(function (data) {
       $scope.operation = data;
@@ -34,6 +29,7 @@ cardModule.controller('cardController', function ($scope, $http, $uibModal, $log
       });
 
       modalInstance.result.then(function (name) {
+          
           console.log(name);
       }, function () {
           $log.info('Modal dismissed at: ' + new Date());
@@ -53,11 +49,15 @@ cardModule.controller('cardController', function ($scope, $http, $uibModal, $log
     };
 });
 
-cardModule.controller('ModalStateCtrl', function ($scope, $uibModalInstance, cardState) {
+cardModule.controller('ModalStateCtrl', function ($scope,$http, $uibModalInstance, cardState) {
 
     $scope.cardOperation = cardState.operation;
+    console.log($scope.cardOperation);
     $scope.allState = cardState.allState;
     $scope.ok = function () {
+        console.log($scope.cardOperation);       
+        postCodeOperateion($scope, $http, $scope.cardOperation);
+        
         $uibModalInstance.close('jambor');
     };
     $scope.cancel = function () {
