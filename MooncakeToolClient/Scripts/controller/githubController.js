@@ -4,7 +4,6 @@ gitModule.directive('card', function () {
     return {
         scope: {
             cardData: '='
-
         },
         restrict: 'AEMC',
         templateUrl: '/partials/card.html',
@@ -24,6 +23,8 @@ gitModule.controller('gitController', ['$scope', '$http', function ($scope, $htt
     $scope.SayHello = function () {
         alert('000');
     }
+
+   
     getCodeInfobyPage($scope, $http, 1);
     getPageNumber($scope, $http);
     getAllProduct($scope, $http);   
@@ -50,6 +51,8 @@ gitModule.controller('gitController', ['$scope', '$http', function ($scope, $htt
     $scope.selectChange = function () {
         console.log('called');
     }
+
+
 
 
     //$scope.samples = [{

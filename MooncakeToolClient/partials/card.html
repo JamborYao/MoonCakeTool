@@ -1,13 +1,15 @@
-﻿<div class="col-md-4 col-sm-6" ng-model="cardData" style="height:350px;overflow:auto" >
+﻿<div class="col-md-4 col-sm-6" ng-model="cardData" style="height:410px;overflow:auto">
     <div class="panel panel-default">
         <div class="notification-item" ng-controller="ModalDemoCtrl">
             <ul class="nav nav-pills" role="tablist">
 
                 <!--<li><span class="badge badge-red" data-toggle="tooltip" title="pull request">3</span></li>-->
-                <li><span class="badge badge-red" data-toggle="tooltip" title="commit" ng-show="{{cardData.NewCommitsHistory}}>0" ng-click="open('lg',cardData.Id)" 
-                          style="cursor:pointer;">{{cardData.NewCommitsHistory}}</span></li>
+                <li>
+                    <span class="badge badge-red" data-toggle="tooltip" title="commit" ng-show="{{cardData.NewCommitsHistory}}>0" ng-click="open('lg',cardData.Id)"
+                          style="cursor:pointer;">{{cardData.NewCommitsHistory}}</span>
+                </li>
             </ul>
-          
+
         </div>
         <div class="panel-heading">
 
@@ -15,15 +17,36 @@
             <h5><a href="{{cardData.Link}}">  {{cardData.Title}}</a></h5>
 
         </div>
-        <div class="panel-body">
+        <div class="panel-body" ng-controller="cardController">
 
             <div class="clearfix"></div>
             <div style="height:100px;overflow:auto">{{cardData.Description | limitTo: 250}}{{cardData.Description.length>250?'...':''}}</div>
-
+            <hr />
+            <div class="progress" ng-click="open('lg',cardData.Id)" style="cursor:pointer">
+                <div class="progress-bar progress-bar-{{state.Style}}" ng-style="setBarWidth(state.Width)" ng-repeat="state in cardData.States" >
+                    <span  >{{state.State}}</span>
+                </div>
+                <!--<div class="progress-bar progress-bar-danger" style="width: 25%" >
+                    <span  >Pending</span>
+                </div>
+                <div class="progress-bar progress-bar-warning" style="width: 25%">
+                    <span>Handling</span>
+                </div>
+                <div class="progress-bar progress-bar-info" style="width: 25%" >
+                    <span>Reviewing</span>
+                </div>
+                <div class="progress-bar progress-bar-success" style="width: 25%">
+                    <span>Finished</span>
+                </div>
+                <div class="progress-bar progress-bar-success" style="width: 25%">
+                    <span>{{cardData.States[0].State}}</span>
+                </div>-->
+            </div>
             <hr>
             <div>
                 <a href="#">{{cardData.Author}}</a>
             </div>
+
         </div>
         <div class="panel-footer">
 
@@ -32,5 +55,6 @@
             <span ng-repeat="platform in cardData.Platforms" class="label label-success">{{platform}}</span>
 
         </div>
+
     </div>
 </div>

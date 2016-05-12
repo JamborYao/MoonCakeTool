@@ -1,0 +1,36 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">To Do List Azure API App Sample </h3>
+
+    <span ng-repeat="c in allState">{{c.State}}</span>
+</div>
+<div class="modal-body">
+
+<form>
+    <fieldset class="form-group">
+        <label >Current Progress:</label>
+        <span>{{cardOperation.State}}</span>
+    </fieldset>
+    <fieldset class="form-group">
+      
+        <label for="exampleSelect1">New Progress</label>
+        <select class="form-control" id="exampleSelect1" ng-model="cardOperation.State" ng-options="o.Id as o.State for o in allState"></select>
+      
+            
+          
+      
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="tblog">Operation Log</label>
+        <textarea class="form-control" id="tblog" rows="3">{{cardOperation.LogInfo}}</textarea>S
+
+        <small class="text-muted">write comments with your operation.</small>
+    </fieldset>
+</form>
+
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
+

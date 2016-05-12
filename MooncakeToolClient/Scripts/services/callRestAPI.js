@@ -53,3 +53,11 @@ function searchByTitle($scope, $http,title) {
        $scope.pageShow = false;
    })
 }
+
+function getAllState($scope, $http) {
+    $http.get(baseUrl + "api/getAllState").
+    success(function (data) {
+        $scope.allState = data;
+
+    })
+}

@@ -18,13 +18,13 @@
         <div class="col-lg-12 panel">
             <div class="col-lg-6 form-inline">
                 <label>Product</label>
-                <select class="input-large form-control" >
+                <select class="input-large form-control">
                     <option value="">All</option>
                     <option ng-repeat="option in allProduct" value="{{option.Value}}">{{option.Name}}</option>
                 </select>
 
                 <label>PlatForm</label>
-                <select class="input-large form-control" >
+                <select class="input-large form-control">
                     <option value="">All</option>
                     <option ng-repeat="option in allPlatform" value="{{option.Value}}">{{option.Name}}</option>
                 </select>
@@ -38,8 +38,9 @@
                 </div>
             </div>
         </div>
+       
         <!--cards list-->
-        <card ng-repeat="sample in samples" card-data="sample"></card>
+        <card ng-repeat="sample in samples" card-data="sample" ></card>
     </div>
 
     <div class="row">

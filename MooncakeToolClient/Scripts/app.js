@@ -4,7 +4,7 @@ var baseUrl ="http://localhost:8929/";
 var controllers = angular.module('controllers', []);
 
 
-var app = angular.module('_app_', ['ngRoute', 'controllers','git']);
+var app = angular.module('_app_', ['ngRoute', 'controllers', 'git', 'card']);
 
 app.config(['$routeProvider',
   function ($routeProvider) {
