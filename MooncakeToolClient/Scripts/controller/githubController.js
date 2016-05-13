@@ -1,4 +1,6 @@
-﻿var gitModule = angular.module("git", ['ngAnimate', 'ui.bootstrap']);
+﻿var gitModule = angular.module("git", ['ngAnimate', 'ui.bootstrap', 'chieffancypants.loadingBar', 'ngAnimate']).config(function (cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = true;
+});
 
 gitModule.directive('card', function () {
     return {
@@ -18,7 +20,7 @@ gitModule.directive('card', function () {
 })
 
 
-gitModule.controller('gitController', ['$scope', '$http', '$uibModal', '$log', 'sampleCodeService', function ($scope, $http, $uibModal, $log, sampleCodeService) {
+gitModule.controller('gitController', ['$rootScope', '$scope', '$http', '$uibModal', '$log', 'sampleCodeService','cfpLoadingBar', function ($rootScope, $scope, $http, $uibModal, $log, sampleCodeService, cfpLoadingBar) {
     $scope.SayHello = function () {
         alert('000');
     }
@@ -26,23 +28,25 @@ gitModule.controller('gitController', ['$scope', '$http', '$uibModal', '$log', '
     $scope.test = 'hello world!';
 
     sampleCodeService.getCodeInfobyPage($scope.searchKey, 1).then(function (result) {
-        $scope.samples = result.data;
+        $rootScope.samples = result.data;
+        sampleCodeService.getPageNumber($scope.searchKey).then(function (result) {
+            $rootScope.pageNumbers = result.data;
+        })
+        console.log($rootScope);
     })
     
 
-    sampleCodeService.getPageNumber($scope.searchKey).then(function (result) {
-        $scope.pageNumbers = result.data;
-    })
+   
     sampleCodeService.getAllProduct().then(function (result) {
-        $scope.allProduct = result.data;
+        $rootScope.allProduct = result.data;
     })
     sampleCodeService.getAllPlatform().then(function (result) {
-        $scope.allPlatform = result.data;
+        $rootScope.allPlatform = result.data;
     })
 
     $scope.getNextPage = function (page, obj) {
         sampleCodeService.getCodeInfobyPage($scope.searchKey, page).then(function (result) {
-            $scope.samples = result.data;
+            $rootScope.samples = result.data;
         });
         $(obj.target).parent().parent().find('li span').attr('style', 'cursor:pointer;color:#337ab7');
         $(obj.target).attr('style', 'cursor:pointer;color:indianred');
@@ -50,18 +54,20 @@ gitModule.controller('gitController', ['$scope', '$http', '$uibModal', '$log', '
     };
 
     $scope.search = function () {
-        console.log($scope.searchKey == null);
-        console.log($scope.searchKey);
-        if ($scope.searchKey == null || $scope.searchKey == '') {
-            $scope.searchKey = "all";
+        $rootScope.searchKey = $scope.searchKey;
+        console.log($rootScope.searchKey == null);
+        console.log($rootScope.searchKey);
+        if ($rootScope.searchKey == null || $rootScope.searchKey == '') {
+            $rootScope.searchKey = "all";
         }
-        sampleCodeService.getCodeInfobyPage($scope.searchKey, 1).then(function (result) {
-            $scope.samples = result.data;
+        sampleCodeService.getCodeInfobyPage($rootScope.searchKey, 1).then(function (result) {
+            $rootScope.samples = result.data;
+            sampleCodeService.getPageNumber($rootScope.searchKey).then(function (result) {
+                $rootScope.pageNumbers = result.data;
+            })
         });
        
-        sampleCodeService.getPageNumber($scope.searchKey).then(function (result) {
-            $scope.pageNumbers = result.data;
-        })
+        
         // searchByTitle($scope, $http, $scope.searchKey);
         // console.log($scope.searchKey == null);
     };

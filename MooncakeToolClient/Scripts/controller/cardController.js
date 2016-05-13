@@ -48,7 +48,7 @@ cardModule.controller('cardController', ['$scope', '$http', '$uibModal', '$log',
     };
 }]);
 
-cardModule.controller('ModalStateCtrl', ['$scope', '$http', '$uibModalInstance', 'sampleCodeService', 'cardState', function ($scope, $http, $uibModalInstance, sampleCodeService, cardState) {
+cardModule.controller('ModalStateCtrl', ['$rootScope','$scope', '$http', '$uibModalInstance', 'sampleCodeService', 'cardState', function ($rootScope,$scope, $http, $uibModalInstance, sampleCodeService, cardState) {
     console.log(cardState);
     $scope.cardOperation = cardState.operation;
     console.log($scope.cardOperation);
@@ -56,15 +56,16 @@ cardModule.controller('ModalStateCtrl', ['$scope', '$http', '$uibModalInstance',
     $scope.ok = function () {
         console.log($scope.cardOperation);
         console.log($scope);
-        //sampleCodeService.postCodeOperateion($scope.cardOperation).then(function () {
-        //    sampleCodeService.getCodeInfobyPage($scope.searchKey, 1).then(function (result) {
-               
-        //    })
-        //});
+        sampleCodeService.postCodeOperateion($scope.cardOperation).then(function () {
+            sampleCodeService.getCodeInfobyPage($scope.searchKey, 1).then(function (result) {
+                $rootScope.samples = result.data;
+            })
+        });
 
         $uibModalInstance.close('jambor');
     };
     $scope.cancel = function () {
+        console.log($rootScope);
         $uibModalInstance.dismiss('cancel');
     };
 }]);
