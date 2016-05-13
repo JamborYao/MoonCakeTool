@@ -26,10 +26,13 @@ gitModule.controller('gitController', ['$rootScope', '$scope', '$http', '$uibMod
     }
     console.log(11);
     $scope.test = 'hello world!';
-
-    sampleCodeService.getCodeInfobyPage($scope.searchKey, 1).then(function (result) {
+    $rootScope.searchKey = "all";
+    $rootScope.selectedProduct = -1;
+    $rootScope.selectedPlatform =-1;
+    $rootScope.selectedState = -1;
+    sampleCodeService.getCodeInfobyPage($scope.searchKey, 1,$rootScope.selectedProduct,$rootScope.selectedPlatform,$rootScope.selectedState).then(function (result) {
         $rootScope.samples = result.data;
-        sampleCodeService.getPageNumber($scope.searchKey).then(function (result) {
+        sampleCodeService.getPageNumber($scope.searchKey,$rootScope.selectedProduct,$rootScope.selectedPlatform,$rootScope.selectedState).then(function (result) {
             $rootScope.pageNumbers = result.data;
         })
         console.log($rootScope);
@@ -43,8 +46,11 @@ gitModule.controller('gitController', ['$rootScope', '$scope', '$http', '$uibMod
     sampleCodeService.getAllPlatform().then(function (result) {
         $rootScope.allPlatform = result.data;
     })
-
+    sampleCodeService.getAllState().then(function (result) {
+        $rootScope.allState = result.data;
+    })
     $scope.getNextPage = function (page, obj) {
+        $rootScope.page = page;
         sampleCodeService.getCodeInfobyPage($scope.searchKey, page).then(function (result) {
             $rootScope.samples = result.data;
         });
@@ -55,14 +61,14 @@ gitModule.controller('gitController', ['$rootScope', '$scope', '$http', '$uibMod
 
     $scope.search = function () {
         $rootScope.searchKey = $scope.searchKey;
-        console.log($rootScope.searchKey == null);
-        console.log($rootScope.searchKey);
-        if ($rootScope.searchKey == null || $rootScope.searchKey == '') {
-            $rootScope.searchKey = "all";
-        }
-        sampleCodeService.getCodeInfobyPage($rootScope.searchKey, 1).then(function (result) {
+        $rootScope.selectedProduct = $scope.selectedProduct;
+        $rootScope.selectedPlatform = $scope.selectedPlatform;
+        $rootScope.selectedState = $scope.selectedState;
+        console.log($rootScope);       
+        
+        sampleCodeService.getCodeInfobyPage($rootScope.searchKey, 1, $rootScope.selectedProduct,$rootScope.selectedPlatform,$rootScope.selectedState).then(function (result) {
             $rootScope.samples = result.data;
-            sampleCodeService.getPageNumber($rootScope.searchKey).then(function (result) {
+            sampleCodeService.getPageNumber($rootScope.searchKey,$rootScope.selectedProduct,$rootScope.selectedPlatform,$rootScope.selectedState).then(function (result) {
                 $rootScope.pageNumbers = result.data;
             })
         });

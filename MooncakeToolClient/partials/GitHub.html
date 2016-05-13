@@ -17,20 +17,19 @@
     <div class="row">
         <!--search bar-->
         <div class="col-lg-12 panel">
-            <div class="col-lg-6 form-inline">
+            <div class="col-lg-8 form-inline">
                 <label>Product</label>
-                <select class="input-large form-control">
+                <select class="input-large form-control" ng-model="selectedProduct" ng-options="o.Id as o.Name for o in allProduct">
                     <option value="">All</option>
-                    <option ng-repeat="option in allProduct" value="{{option.Value}}">{{option.Name}}</option>
-                </select>
 
-                <label>PlatForm</label>
-                <select class="input-large form-control">
-                    <option value="">All</option>
-                    <option ng-repeat="option in allPlatform" value="{{option.Value}}">{{option.Name}}</option>
                 </select>
+                <label>PlatForm</label>
+                <select class="input-large form-control" ng-model="selectedPlatform" ng-options="o.Id as o.Name for o in allPlatform">
+                <option value="">All</option></select>
+                <label>States</label>
+                <select class="input-large form-control" ng-model="selectedState" ng-options="o.Id as o.State for o in allState"><option value="">All</option></select>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for..." ng-model="searchKey" />
                     <span class="input-group-btn">
@@ -39,9 +38,9 @@
                 </div>
             </div>
         </div>
-       
+
         <!--cards list-->
-        <card ng-repeat="sample in samples" card-data="sample" ></card>
+        <card ng-repeat="sample in samples" card-data="sample"></card>
     </div>
 
     <div class="row">

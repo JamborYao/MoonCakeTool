@@ -1,9 +1,9 @@
 ﻿var cardModule = angular.module("card", ['git']);
-cardModule.controller('cardController', ['$scope', '$http', '$uibModal', '$log', 'sampleCodeService', function ($scope, $http, $uibModal, $log, sampleCodeService) {
+cardModule.controller('cardController', ['$scope', '$http', '$uibModal', '$log', 'sampleCodeService', '$rootScope', function ($scope, $http, $uibModal, $log, sampleCodeService, $rootScope) {
 
-    sampleCodeService.getAllState().then(function (result) {
-        $scope.allState = result.data;
-    })
+    //sampleCodeService.getAllState().then(function (result) {
+    //    $scope.allState = result.data;
+    //})
 
     $scope.animationsEnabled = true;
     $scope.open = function (size, id) {
@@ -21,7 +21,7 @@ cardModule.controller('cardController', ['$scope', '$http', '$uibModal', '$log',
                     cardState: function () {
                         return {
                             operation: $scope.operation,
-                            allState: $scope.allState
+                            allState: $rootScope.allState
                         }
                     }
                 }
@@ -54,10 +54,11 @@ cardModule.controller('ModalStateCtrl', ['$rootScope','$scope', '$http', '$uibMo
     console.log($scope.cardOperation);
     $scope.allState = cardState.allState;
     $scope.ok = function () {
+        console.log($rootScope.page);
         console.log($scope.cardOperation);
         console.log($scope);
         sampleCodeService.postCodeOperateion($scope.cardOperation).then(function () {
-            sampleCodeService.getCodeInfobyPage($scope.searchKey, 1).then(function (result) {
+            sampleCodeService.getCodeInfobyPage($scope.searchKey, $rootScope.page).then(function (result) {
                 $rootScope.samples = result.data;
             })
         });

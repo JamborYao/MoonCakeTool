@@ -73,20 +73,21 @@
 
 gitModule.factory('sampleCodeService', function ($http) {
     var fac = {};
-    fac.getCodeInfobyPage = function (searchKey, page) {
-        console.log(1);
-        if (searchKey == null) {
-            searchKey = "all";
-        }
+    fac.getCodeInfobyPage = function (searchKey, page,product,platform,state) {
+       
+        searchKey = searchKey == null ? "all" : searchKey;
+        product = product == null ? -1 : product;
+        platform = platform == null ? -1 : platform;
+        state = state == null ? -1 : state;
         console.log(searchKey);
-        return $http.get(baseUrl + "api/getCodeInfobyPage/" + page + "/" + searchKey);
+        return $http.get(baseUrl + "api/getCodeInfobyPage/" + page + "/" + searchKey+"/"+product+"/"+platform+"/"+state);
     }
-    fac.getPageNumber = function (searchKey) {
-        if (searchKey == null || searchKey == '') {
-            searchKey = "all";
-        }
-        console.log('get page number' + searchKey)
-        return $http.get(baseUrl + "api/getPageNumber/" + searchKey);
+    fac.getPageNumber = function (searchKey,product,platform,state) {
+        searchKey = searchKey == null ? "all" : searchKey;
+        product = product == null ? -1 : product;
+        platform = platform == null ? -1 : platform;
+        state = state == null ? -1 : state;
+        return $http.get(baseUrl + "api/getPageNumber/" + searchKey + "/" + product + "/" + platform + "/" + state);
 
     }
 
