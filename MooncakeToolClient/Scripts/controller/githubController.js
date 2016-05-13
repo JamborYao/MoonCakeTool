@@ -18,32 +18,50 @@ gitModule.directive('card', function () {
 })
 
 
-gitModule.controller('gitController', ['$scope', '$http', 'columnChart', function ($scope, $http, $uibModal, $log, columnChart) {
+gitModule.controller('gitController', ['$scope', '$http', '$uibModal', '$log', 'sampleCodeService', function ($scope, $http, $uibModal, $log, sampleCodeService) {
     $scope.SayHello = function () {
         alert('000');
     }
     console.log(11);
     $scope.test = 'hello world!';
-    getCodeInfobyPage($scope, $http, 1);
-    getPageNumber($scope, $http);
-    getAllProduct($scope, $http);
-    getAllPlatform($scope, $http);
+
+    sampleCodeService.getCodeInfobyPage($scope.searchKey, 1).then(function (result) {
+        $scope.samples = result.data;
+    })
+    
+
+    sampleCodeService.getPageNumber($scope.searchKey).then(function (result) {
+        $scope.pageNumbers = result.data;
+    })
+    sampleCodeService.getAllProduct().then(function (result) {
+        $scope.allProduct = result.data;
+    })
+    sampleCodeService.getAllPlatform().then(function (result) {
+        $scope.allPlatform = result.data;
+    })
 
     $scope.getNextPage = function (page, obj) {
-        getCodeInfobyPage($scope, $http, page);
+        sampleCodeService.getCodeInfobyPage($scope.searchKey, page).then(function (result) {
+            $scope.samples = result.data;
+        });
         $(obj.target).parent().parent().find('li span').attr('style', 'cursor:pointer;color:#337ab7');
         $(obj.target).attr('style', 'cursor:pointer;color:indianred');
 
     };
-    console.log(columnChart.list);
+
     $scope.search = function () {
         console.log($scope.searchKey == null);
         console.log($scope.searchKey);
         if ($scope.searchKey == null || $scope.searchKey == '') {
             $scope.searchKey = "all";
         }
-        getCodeInfobyPage($scope, $http, 1);
-        getPageNumber($scope, $http);
+        sampleCodeService.getCodeInfobyPage($scope.searchKey, 1).then(function (result) {
+            $scope.samples = result.data;
+        });
+       
+        sampleCodeService.getPageNumber($scope.searchKey).then(function (result) {
+            $scope.pageNumbers = result.data;
+        })
         // searchByTitle($scope, $http, $scope.searchKey);
         // console.log($scope.searchKey == null);
     };
@@ -53,26 +71,7 @@ gitModule.controller('gitController', ['$scope', '$http', 'columnChart', functio
     }
 
 
-
-
-    //$scope.samples = [{
-    //    author: 'Free @Bootply',
-    //    tag: 'dashboard1',
-    //    body: "There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline."
-    //}]
-}]).factory('columnChart', function () {
-    var columnChart = {};
-    columnChart.list = [];
-    var data = [
-          ["Element", "Density", { role: "style" }],
-          ["Copper", 8.94, "#b87333"],
-          ["Silver", 10.49, "silver"],
-          ["Gold", 19.30, "gold"],
-          ["Platinum", 21.45, "color: #e5e4e2"]
-    ];
-    columnChart.list = data;
-    return columnChart;
-});
+}])
 
 controllers.controller('githubController', ['$scope',
     function ($scope) {
@@ -157,3 +156,4 @@ gitModule.controller('ModalStateCtrl', function ($scope, $http, $uibModalInstanc
         $uibModalInstance.dismiss('cancel');
     };
 });
+

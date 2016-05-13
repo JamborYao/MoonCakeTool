@@ -1,72 +1,124 @@
-﻿function getCodeInfobyPage($scope, $http, page) {
-    if ($scope.searchKey == null) {
-        $scope.searchKey = "all";
+﻿//function getCodeInfobyPage($scope, $http, page) {
+//    if ($scope.searchKey == null) {
+//        $scope.searchKey = "all";
+//    }
+//    console.log($scope.searchKey);
+//    $http.get(baseUrl + "api/getCodeInfobyPage/" + page + "/" + $scope.searchKey).
+//    success(function (data) {
+//        $scope.samples = data;
+//        console.log(data);
+//    })
+//}
+
+//function getPageNumber($scope, $http) {
+//    if ($scope.searchKey == null || $scope.searchKey == '') {
+//        $scope.searchKey = "all";
+//    }
+//    $http.get(baseUrl + "api/getPageNumber/" + $scope.searchKey).
+//   success(function (data) {
+//       $scope.pageNumbers = data;
+
+//       $scope.totalPage = data.length;
+//       console.log(data);
+//   })
+//}
+
+//function getNewCommit($scope, $http, id) {
+//    $http.get(baseUrl + "api/getNewCommit/" + id).
+//    success(function (data) {
+//        $scope.newCommits = data;
+//        console.log(data);
+//    })
+//}
+
+//function getAllProduct($scope, $http) {
+//    $http.get(baseUrl + "api/getAllProduct").
+//   success(function (data) {
+//       $scope.allProduct = data;
+//   })
+//}
+
+
+//function getAllPlatform($scope, $http) {
+//    $http.get(baseUrl + "api/getAllPlatform").
+//   success(function (data) {
+//       $scope.allPlatform = data;
+//   })
+//}
+
+//function searchByTitle($scope, $http, title) {
+//    $http.get(baseUrl + "api/searchByTitle/" + title).
+//   success(function (data) {
+//       $scope.samples = data;
+//       $scope.pageShow = false;
+//   })
+//}
+
+//function getAllState($scope, $http) {
+//    $http.get(baseUrl + "api/getAllState").
+//    success(function (data) {
+//        $scope.allState = data;
+
+//    })
+//}
+
+
+//function postCodeOperateion($scope, $http,data)
+//{
+//    console.log(data);
+//    $http.post(baseUrl + "api/updateCodeState", data).success(function (status) {
+//        console.log(status)
+//    });
+//}
+
+gitModule.factory('sampleCodeService', function ($http) {
+    var fac = {};
+    fac.getCodeInfobyPage = function (searchKey, page) {
+        console.log(1);
+        if (searchKey == null) {
+            searchKey = "all";
+        }
+        console.log(searchKey);
+        return $http.get(baseUrl + "api/getCodeInfobyPage/" + page + "/" + searchKey);
     }
-    console.log($scope.searchKey);
-    $http.get(baseUrl + "api/getCodeInfobyPage/" + page + "/" + $scope.searchKey).
-    success(function (data) {
-        $scope.samples = data;
-        console.log(data);
-    })
-}
+    fac.getPageNumber = function (searchKey) {
+        if (searchKey == null || searchKey == '') {
+            searchKey = "all";
+        }
+        console.log('get page number' + searchKey)
+        return $http.get(baseUrl + "api/getPageNumber/" + searchKey);
 
-function getPageNumber($scope, $http) {
-    if ($scope.searchKey == null || $scope.searchKey == '') {
-        $scope.searchKey = "all";
     }
-    $http.get(baseUrl + "api/getPageNumber/" + $scope.searchKey).
-   success(function (data) {
-       $scope.pageNumbers = data;
 
-       $scope.totalPage = data.length;
-       console.log(data);
-   })
-}
+    fac.getNewCommit = function (id) {
+        return $http.get(baseUrl + "api/getNewCommit/" + id);
+    }
 
-function getNewCommit($scope, $http, id) {
-    $http.get(baseUrl + "api/getNewCommit/" + id).
-    success(function (data) {
-        $scope.newCommits = data;
-        console.log(data);
-    })
-}
+    fac.getAllProduct = function () {
+        return $http.get(baseUrl + "api/getAllProduct");
 
-function getAllProduct($scope, $http) {
-    $http.get(baseUrl + "api/getAllProduct").
-   success(function (data) {
-       $scope.allProduct = data;
-   })
-}
+    }
 
 
-function getAllPlatform($scope, $http) {
-    $http.get(baseUrl + "api/getAllPlatform").
-   success(function (data) {
-       $scope.allPlatform = data;
-   })
-}
+    fac.getAllPlatform = function () {
+        return $http.get(baseUrl + "api/getAllPlatform");
+    }
 
-function searchByTitle($scope, $http, title) {
-    $http.get(baseUrl + "api/searchByTitle/" + title).
-   success(function (data) {
-       $scope.samples = data;
-       $scope.pageShow = false;
-   })
-}
+    fac.searchByTitle = function (title) {
+        return $http.get(baseUrl + "api/searchByTitle/" + title);
+    }
 
-function getAllState($scope, $http) {
-    $http.get(baseUrl + "api/getAllState").
-    success(function (data) {
-        $scope.allState = data;
-
-    })
-}
+    fac.getAllState = function () {
+        return $http.get(baseUrl + "api/getAllState");
+    }
 
 
-function postCodeOperateion($scope, $http,data)
-{
-    console.log(data);
-    $http.post(baseUrl + "api/updateCodeState", data).success(function (status) {
-        console.log(status)
-    });
-}
+    fac.postCodeOperateion = function (data) {
+
+        return $http.post(baseUrl + "api/updateCodeState", data);
+    }
+    fac.getSampleCodeOperation = function (id) {
+        return $http.get(baseUrl + "api/getSampleCodeOperation/" + id);
+    }
+    return fac;
+});

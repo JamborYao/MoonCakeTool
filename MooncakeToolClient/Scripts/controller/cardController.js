@@ -1,42 +1,41 @@
-﻿var cardModule = angular.module("card", []);
-cardModule.controller('cardController', function ($scope, $http, $uibModal, $log) {
+﻿var cardModule = angular.module("card", ['git']);
+cardModule.controller('cardController', ['$scope', '$http', '$uibModal', '$log', 'sampleCodeService', function ($scope, $http, $uibModal, $log, sampleCodeService) {
 
-    getAllState($scope, $http);   
+    sampleCodeService.getAllState().then(function (result) {
+        $scope.allState = result.data;
+    })
 
- 
     $scope.animationsEnabled = true;
     $scope.open = function (size, id) {
-       
-        $http.get(baseUrl + "api/getSampleCodeOperation/" + id).
-  success(function (data) {
-      $scope.operation = data;
-      console.log(data);
-  }).then(function () {
-      console.log($scope.allState);
-      var modalInstance = $uibModal.open({
-          animation: $scope.animationsEnabled,
-          templateUrl: '/partials/cardState.html',
-          controller: 'ModalStateCtrl',
-          size: size,
-          resolve: {
-              cardState: function () {
-                  return {
-                      operation: $scope.operation,
-                      allState: $scope.allState
-                  }
-              }
-          }
-      });
 
-      modalInstance.result.then(function (name) {
-          
-          console.log(name);
-      }, function () {
-          $log.info('Modal dismissed at: ' + new Date());
-      });
+        sampleCodeService.getSampleCodeOperation(id).then(function (result) {
+
+            $scope.operation = result.data;
+            console.log($scope.operation);
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: '/partials/cardState.html',
+                controller: 'ModalStateCtrl',
+                size: size,
+                resolve: {
+                    cardState: function () {
+                        return {
+                            operation: $scope.operation,
+                            allState: $scope.allState
+                        }
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (name) {
+
+                console.log(name);
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
 
 
-  });
+        });
 
     };
 
@@ -47,20 +46,25 @@ cardModule.controller('cardController', function ($scope, $http, $uibModal, $log
     $scope.setBarWidth = function (width) {
         return { 'width': width }
     };
-});
+}]);
 
-cardModule.controller('ModalStateCtrl', function ($scope,$http, $uibModalInstance, cardState) {
-
+cardModule.controller('ModalStateCtrl', ['$scope', '$http', '$uibModalInstance', 'sampleCodeService', 'cardState', function ($scope, $http, $uibModalInstance, sampleCodeService, cardState) {
+    console.log(cardState);
     $scope.cardOperation = cardState.operation;
     console.log($scope.cardOperation);
     $scope.allState = cardState.allState;
     $scope.ok = function () {
-        console.log($scope.cardOperation);       
-        postCodeOperateion($scope, $http, $scope.cardOperation);
-        
+        console.log($scope.cardOperation);
+        console.log($scope);
+        //sampleCodeService.postCodeOperateion($scope.cardOperation).then(function () {
+        //    sampleCodeService.getCodeInfobyPage($scope.searchKey, 1).then(function (result) {
+               
+        //    })
+        //});
+
         $uibModalInstance.close('jambor');
     };
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
-});
+}]);
