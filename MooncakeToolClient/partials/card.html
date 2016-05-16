@@ -23,24 +23,10 @@
             <div style="height:100px;overflow:auto">{{cardData.Description | limitTo: 250}}{{cardData.Description.length>250?'...':''}}</div>
             <hr />
             <div class="progress" ng-click="open('lg',cardData.Id)" style="cursor:pointer">
-                <div class="progress-bar progress-bar-{{state.Style}}" ng-style="setBarWidth(state.Width)" ng-repeat="state in cardData.States" >
-                    <span  >{{state.State}}</span>
+                <div class="progress-bar progress-bar-{{state.Style}}" ng-style="setBarWidth(state.Width)" ng-repeat="state in cardData.States">
+                    <span>{{state.State}}</span>
                 </div>
-                <!--<div class="progress-bar progress-bar-danger" style="width: 25%" >
-                    <span  >Pending</span>
-                </div>
-                <div class="progress-bar progress-bar-warning" style="width: 25%">
-                    <span>Handling</span>
-                </div>
-                <div class="progress-bar progress-bar-info" style="width: 25%" >
-                    <span>Reviewing</span>
-                </div>
-                <div class="progress-bar progress-bar-success" style="width: 25%">
-                    <span>Finished</span>
-                </div>
-                <div class="progress-bar progress-bar-success" style="width: 25%">
-                    <span>{{cardData.States[0].State}}</span>
-                </div>-->
+
             </div>
             <hr>
             <div>
@@ -50,9 +36,9 @@
         </div>
         <div class="panel-footer">
 
-            <span ng-repeat="product in cardData.Products" class="label label-primary">{{product}}</span>
+            <span ng-repeat="pro in cardData.Products | limitTo:3" class="label label-primary" style="margin-left:2px;">{{pro}}</span>
 
-            <span ng-repeat="platform in cardData.Platforms" class="label label-success">{{platform}}</span>
+            <span ng-repeat="platform in cardData.Platforms| limitTo:2" class="label label-success" style="margin-left:2px;">{{platform}}</span>
 
         </div>
 
