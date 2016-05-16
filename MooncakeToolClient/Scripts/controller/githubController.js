@@ -25,6 +25,7 @@ gitModule.controller('gitController', ['$rootScope', '$scope', '$http', '$uibMod
         alert('000');
     }
     console.log(11);
+    $rootScope.page = 1;
     $scope.test = 'hello world!';
     $rootScope.searchKey = "all";
     $rootScope.selectedProduct = -1;
