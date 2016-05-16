@@ -11,7 +11,7 @@ gitModule.directive('card', function () {
         templateUrl: '/partials/card.html',
         controller: function ($scope) {
             this.alertME = function () {
-                console.log('1');
+             //   console.log('1');
             }
         },
         replace: true
@@ -24,7 +24,7 @@ gitModule.controller('gitController', ['$rootScope', '$scope', '$http', '$uibMod
     $scope.SayHello = function () {
         alert('000');
     }
-    console.log(11);
+    
     $rootScope.page = 1;
     $scope.test = 'hello world!';
     $rootScope.searchKey = "all";
@@ -35,8 +35,7 @@ gitModule.controller('gitController', ['$rootScope', '$scope', '$http', '$uibMod
         $rootScope.samples = result.data;
         sampleCodeService.getPageNumber($scope.searchKey,$rootScope.selectedProduct,$rootScope.selectedPlatform,$rootScope.selectedState).then(function (result) {
             $rootScope.pageNumbers = result.data;
-        })
-        console.log($rootScope);
+        })     
     })
     
 
@@ -79,9 +78,7 @@ gitModule.controller('gitController', ['$rootScope', '$scope', '$http', '$uibMod
         // console.log($scope.searchKey == null);
     };
 
-    $scope.selectChange = function () {
-        console.log('called');
-    }
+ 
 
 
 }])
@@ -89,7 +86,7 @@ gitModule.controller('gitController', ['$rootScope', '$scope', '$http', '$uibMod
 controllers.controller('githubController', ['$scope',
     function ($scope) {
         $scope.SayHello = function () {
-            alert('111222');
+          
         }
     }]);
 

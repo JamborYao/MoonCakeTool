@@ -53,10 +53,7 @@ cardModule.controller('ModalStateCtrl', ['$rootScope','$scope', '$http', '$uibMo
     $scope.cardOperation = cardState.operation;
     console.log($scope.cardOperation);
     $scope.allState = cardState.allState;
-    $scope.ok = function () {
-        console.log($rootScope.page);
-        console.log($scope.cardOperation);
-        console.log($scope);
+    $scope.ok = function () {      
         sampleCodeService.postCodeOperateion($scope.cardOperation).then(function () {
             sampleCodeService.getCodeInfobyPage($rootScope.searchKey, $rootScope.page).then(function (result) {
             
