@@ -7,6 +7,8 @@
                 <li>
                     <span class="badge badge-red" data-toggle="tooltip" title="commit" ng-show="{{cardData.NewCommitsHistory}}>0" ng-click="open('lg',cardData.Id)"
                           style="cursor:pointer;">{{cardData.NewCommitsHistory}}</span>
+
+
                 </li>
             </ul>
 
@@ -28,9 +30,11 @@
                 </div>
 
             </div>
+           
             <hr>
             <div>
                 <a href="#">{{cardData.Author}}</a>
+                <div style="margin-right:2px;float:right;font-size:11px" ng-hide="cardData.GitHubRepro==null"> <a href="{{cardData.GitHubRepro}}">A CN GitHub Repro</a></div>
             </div>
 
         </div>
@@ -39,7 +43,7 @@
             <span ng-repeat="pro in cardData.Products | limitTo:3" class="label label-primary" style="margin-left:2px;">{{pro}}</span>
 
             <span ng-repeat="platform in cardData.Platforms| limitTo:2" class="label label-success" style="margin-left:2px;">{{platform}}</span>
-
+       
         </div>
 
     </div>

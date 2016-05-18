@@ -51,6 +51,8 @@ cardModule.controller('cardController', ['$scope', '$http', '$uibModal', '$log',
 cardModule.controller('ModalStateCtrl', ['$rootScope','$scope', '$http', '$uibModalInstance', 'sampleCodeService', 'cardState', function ($rootScope,$scope, $http, $uibModalInstance, sampleCodeService, cardState) {
     console.log(cardState);
     $scope.cardOperation = cardState.operation;
+    $scope.onlyNumbers = /^\d+$/;
+    $scope.labor = 10;
     console.log($scope.cardOperation);
     $scope.allState = cardState.allState;
     $scope.ok = function () {      
@@ -69,3 +71,39 @@ cardModule.controller('ModalStateCtrl', ['$rootScope','$scope', '$http', '$uibMo
         $uibModalInstance.dismiss('cancel');
     };
 }]);
+
+cardModule.directive('validNumber', function () {
+    return {
+        require: '?ngModel',
+        link: function (scope, element, attrs, ngModelCtrl) {
+            if (!ngModelCtrl) {
+                return;
+            }
+
+            ngModelCtrl.$parsers.push(function (val) {
+                if (angular.isUndefined(val)) {
+                    var val = '';
+                }
+                var clean = val.replace(/[^0-9\.]/g, '');
+                var decimalCheck = clean.split('.');
+
+                if (!angular.isUndefined(decimalCheck[1])) {
+                    decimalCheck[1] = decimalCheck[1].slice(0, 2);
+                    clean = decimalCheck[0] + '.' + decimalCheck[1];
+                }
+
+                if (val !== clean) {
+                    ngModelCtrl.$setViewValue(clean);
+                    ngModelCtrl.$render();
+                }
+                return clean;
+            });
+
+            element.bind('keypress', function (event) {
+                if (event.keyCode === 32) {
+                    event.preventDefault();
+                }
+            });
+        }
+    };
+});
