@@ -1,5 +1,5 @@
-﻿//var baseUrl = "http://10.168.172.89:88/";
-var baseUrl ="http://localhost:8929/";
+﻿var baseUrl = "http://10.168.172.89:88/";
+//var baseUrl ="http://localhost:8929/";
 
 var controllers = angular.module('controllers', []);
 
